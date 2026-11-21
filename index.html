@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Rozkłady jazdy busów w powiecie suskim | Komunikacja suska</title>
+<meta name="description" content="Rozkłady jazdy busów prywatnych przewoźników w powiecie suskim: Sucha Beskidzka, Maków Podhalański, Jordanów, Zawoja, Stryszawa oraz dojazdy do Krakowa. Utrudnienia, przewoźnicy i ich tabor.">
+<meta name="theme-color" content="#15171a">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="img/hero-m-720.webp" imagesrcset="img/hero-m-720.webp 720w, img/hero-m-1100.webp 1100w" imagesizes="100vw" media="(max-width:899px)" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/saira-rdzen.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-rdzen.woff2" crossorigin>
+<style>
+@font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-rdzen.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B0,U+00B7,U+00BB,U+00D3,U+00F3,U+2013,U+2018-2019,U+201C-201E,U+2022,U+2026}
+@font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-rdzen.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B0,U+00B7,U+00BB,U+00D3,U+00D7,U+00F3,U+2013-2014,U+2018-2019,U+201C-201E,U+2022,U+2026,U+20AC}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
+:root{--ink:#15171a;--ink2:#22252a;--g:#eef0f2;--line:#d6dadf;--tx:#1b1e22;--mu:#5b626c;--am:#ffb000;--am2:#ffc53d;--w:min(92vw,1680px);--hd:64px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:400 17px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx);background:#fff;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:Saira,Inter,sans-serif;line-height:1.08;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(30px,2.6vw + 14px,56px);font-weight:700}
+h3{font-size:21px;font-weight:700}
+.wrap{width:var(--w);margin:0 auto}
+.num{font-family:Saira,Inter,sans-serif;font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--am);outline-offset:2px}
+
+/* linia trasy - motyw */
+.trasa{display:flex;align-items:center;gap:0;height:12px}
+.trasa i{width:12px;height:12px;border-radius:50%;border:3px solid currentColor;background:transparent;flex:none}
+.trasa b{height:3px;background:currentColor;flex:1}
+.sek-gl{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:clamp(26px,3vw,48px)}
+.sek-gl p{margin:0;max-width:640px;color:var(--mu)}
+.sek-gl .trasa{width:100%;color:var(--tx);margin-top:6px}
+
+/* header */
+.hd{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
+.hd .wrap{height:var(--hd);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo img{height:36px;width:auto}
+.nav{display:flex;gap:clamp(14px,2vw,34px);align-items:center}
+.nav a{text-decoration:none;font-weight:600;font-size:16px;padding:8px 0;border-bottom:3px solid transparent}
+.nav a:hover{border-color:var(--am)}
+.nav a.akt{border-color:var(--ink)}
+.burger{display:none;background:none;border:0;width:48px;height:48px;margin-right:-10px;cursor:pointer;position:relative}
+.burger span,.burger span:before,.burger span:after{position:absolute;left:12px;width:24px;height:3px;background:var(--ink);content:"";transition:transform .2s}
+.burger span{top:23px}.burger span:before{top:-8px;left:0}.burger span:after{top:8px;left:0}
+.hd.otw .burger span{background:transparent}.hd.otw .burger span:before{transform:translateY(8px) rotate(45deg)}.hd.otw .burger span:after{transform:translateY(-8px) rotate(-45deg)}
+
+/* hero */
+.hero{position:relative;background:var(--ink)}
+.mozaika{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:var(--ink)}
+.mozaika img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.hero-m{display:none}
+.panel{position:absolute;left:calc((100vw - var(--w))/2);top:50%;transform:translateY(-50%);width:min(600px,42vw);background:var(--ink);color:#fff;padding:0 0 clamp(26px,2.4vw,40px);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.tablica{display:flex;align-items:center;gap:14px;padding:14px clamp(24px,2.4vw,40px);background:#0b0c0e;color:var(--am);font:600 15px/1.2 Saira,sans-serif;letter-spacing:.02em}
+.tablica .trasa{flex:1;color:var(--am);height:10px}
+.tablica .trasa i{width:10px;height:10px;border-width:2px}.tablica .trasa b{height:2px}
+.panel h1{font-size:clamp(34px,2.4vw + 14px,62px);font-weight:700;padding:clamp(22px,2vw,34px) clamp(24px,2.4vw,40px) 0}
+.panel p{margin:16px clamp(24px,2.4vw,40px) 0;color:#c9ced5;font-size:clamp(16px,.3vw + 14px,19px)}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;background:var(--am);color:#111;font:700 17px/1 Saira,sans-serif;text-decoration:none;border:0;cursor:pointer;border-radius:3px}
+.btn:hover{background:var(--am2)}
+.btn svg{width:20px;height:20px}
+.panel .btn{margin:26px clamp(24px,2.4vw,40px) 0}
+
+.szybkie{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:22px clamp(24px,2.4vw,40px) 0;padding-top:18px;border-top:1px solid #2f333a}
+.szybkie span{width:100%;font-size:14px;color:#9aa1ab}
+.szybkie button{background:transparent;border:1px solid #444951;color:#fff;border-radius:3px;padding:8px 12px;font-size:14.5px;font-weight:600;cursor:pointer;min-height:40px}
+.szybkie button:hover{border-color:var(--am);color:var(--am)}
+section{scroll-margin-top:var(--hd)}
+/* rozklad */
+.rozklad{background:var(--ink);color:#fff;padding:clamp(56px,6vw,110px) 0}
+.rozklad .sek-gl p{color:#aeb4bc}
+.rozklad .sek-gl .trasa{color:#3a3e45}
+.wybor{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:22px}
+.wybor::-webkit-scrollbar{display:none}
+.wybor button{flex:none;background:var(--ink2);border:1px solid #33373e;color:#fff;padding:12px 18px;border-radius:3px;cursor:pointer;font-weight:600;font-size:16px;text-align:left;line-height:1.25}
+.wybor button small{display:block;font-weight:400;color:#9aa1ab;font-size:13px}
+.wybor button[aria-pressed=true]{background:var(--am);border-color:var(--am);color:#111}
+.wybor button[aria-pressed=true] small{color:#3b2d00}
+.uklad{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:clamp(24px,3vw,56px);align-items:start}
+.filtry{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-bottom:14px}
+.filtry label{font-size:14px;color:#aeb4bc;display:block;margin-bottom:4px}
+.filtry select{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2315171a' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center;color:#111;border:0;border-radius:3px;font:600 16px Inter,sans-serif;padding:12px 40px 12px 14px;min-height:48px;max-width:100%}
+.dni{display:inline-flex;border:1px solid #3a3e45;border-radius:3px;overflow:hidden}
+.dni button{background:transparent;border:0;color:#fff;padding:0 16px;min-height:46px;cursor:pointer;font-weight:600;font-size:15px}
+.dni button+button{border-left:1px solid #3a3e45}
+.dni button[aria-pressed=true]{background:#fff;color:#111}
+.najblizszy{margin:6px 0 16px;min-height:28px;color:var(--am);font:600 19px/1.4 Saira,sans-serif}
+.najblizszy span{color:#aeb4bc;font:400 15px Inter,sans-serif}
+.tabl{background:#fff;color:#111;border-radius:3px;overflow:hidden}
+.tabl .naglowek{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:14px 20px;background:var(--g);border-bottom:2px solid var(--ink);font-weight:600;font-size:15px}
+.tabl .naglowek b{font:700 18px Saira,sans-serif}
+.wiersz{display:grid;grid-template-columns:64px 1fr;border-bottom:1px solid #e3e6ea}
+.wiersz:last-child{border-bottom:0}
+.wiersz .g{font:700 26px/1 Saira,sans-serif;font-variant-numeric:tabular-nums;padding:12px 0;text-align:center;background:#f6f7f8;border-right:2px solid var(--ink)}
+.wiersz .m{display:flex;flex-wrap:wrap;gap:4px 6px;padding:10px 14px;align-items:center}
+.wiersz .m span{font:600 22px/1 Saira,sans-serif;font-variant-numeric:tabular-nums;padding:5px 6px;border-radius:3px}
+.wiersz .m sup{font:700 12px Inter,sans-serif;margin-left:1px;color:#6a5000;vertical-align:top}
+.wiersz .m span.nast{background:var(--am);color:#111}
+.wiersz .m span.nast sup{color:#111}
+.pusto{padding:26px 20px;color:var(--mu)}
+.legenda{margin:14px 0 0;font-size:14.5px;color:#aeb4bc;line-height:1.55}
+.legenda b{color:#fff}
+.bok{background:var(--ink2);border:1px solid #2f333a;border-radius:3px;padding:24px}
+.bok h3{font-size:19px;margin-bottom:4px}
+.bok .meta{color:#aeb4bc;font-size:15px;margin:0 0 18px}
+.bok .meta b{color:var(--am);font-weight:600}
+.bok details summary{cursor:pointer;font-weight:600;color:#fff;margin-bottom:12px;list-style-position:outside}
+.przyst{list-style:none;margin:0;padding:0;position:relative}
+.przyst:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:3px;background:#4a4f57}
+.przyst li{position:relative;padding:3px 0 3px 28px;font-size:15.5px;color:#d8dce1}
+.przyst li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border:3px solid #8b929c;border-radius:50%;background:var(--ink2)}
+.przyst li.kon{font-weight:700;color:#fff}
+.przyst li.kon:before{border-color:var(--am);background:var(--am)}
+.zastrz{margin-top:18px;padding-top:16px;border-top:1px solid #33373e;font-size:13.5px;color:#9aa1ab}
+
+/* wszystkie trasy */
+.trasy{background:var(--g);padding:clamp(56px,6vw,110px) 0}
+.kol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:clamp(24px,3vw,56px)}
+.grupa h3{font-size:22px;padding-bottom:12px;border-bottom:3px solid var(--ink);margin-bottom:6px}
+.grupa ul{list-style:none;margin:0;padding:0}
+.grupa li{border-bottom:1px solid var(--line)}
+.poz{display:flex;align-items:center;gap:14px;padding:13px 2px;width:100%;background:none;border:0;text-align:left;cursor:default;font-size:17px}
+.poz .rel{font-weight:600;flex:1;min-width:0}
+.poz .rel em{font-style:normal;color:var(--mu);font-weight:400;font-size:14.5px;display:block}
+.poz .data{flex:none;font-size:14px;color:var(--mu);font-variant-numeric:tabular-nums}
+button.poz{cursor:pointer}
+button.poz .rel{text-decoration:underline;text-decoration-color:var(--am);text-decoration-thickness:3px;text-underline-offset:6px}
+button.poz:hover .rel{text-decoration-color:var(--ink)}
+.kropka{width:12px;height:12px;border:3px solid var(--ink);border-radius:50%;flex:none}
+button.poz .kropka{background:var(--am);border-color:var(--ink)}
+
+/* aktualnosci */
+.akt-s{padding:clamp(56px,6vw,110px) 0}
+.wpisy{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2vw,32px)}
+.wpis{border-top:3px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+.wpis time{font:600 15px Saira,sans-serif;color:#111;background:var(--am);align-self:flex-start;padding:3px 9px;border-radius:2px;font-variant-numeric:tabular-nums}
+.wpis h3{font-size:22px;line-height:1.18}
+.wpis p{margin:0;color:var(--mu);font-size:16px}
+.wpis .kat{font-size:14px;color:var(--mu);font-weight:600}
+
+/* przewoznicy */
+.przew{background:var(--g);padding:clamp(56px,6vw,110px) 0;overflow:hidden}
+.karuzela{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(280px,24vw,420px);gap:clamp(16px,1.6vw,26px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;cursor:grab}
+.karuzela::-webkit-scrollbar{display:none}
+.karuzela.ciag{cursor:grabbing;scroll-snap-type:none}
+.karta{scroll-snap-align:start;background:#fff;border-radius:3px;overflow:hidden;display:flex;flex-direction:column}
+.zdj{position:relative;aspect-ratio:3/2;background:#d9dde2}
+.zdj .tor{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.zdj .tor::-webkit-scrollbar{display:none}
+.zdj .tor img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;cursor:zoom-in}
+.zdj .lic{position:absolute;right:10px;bottom:10px;background:rgba(21,23,26,.82);color:#fff;font:600 13px Saira,sans-serif;padding:3px 8px;border-radius:2px;pointer-events:none}
+.zdj .st{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;opacity:0;transition:opacity .15s;display:grid;place-items:center}
+.zdj:hover .st{opacity:1}
+.zdj .st.l{left:10px}.zdj .st.p{right:10px}
+.zdj .st svg{width:16px;height:16px}
+.karta .op{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.karta .op .trasa{color:var(--line);margin-bottom:6px}
+.karta .op .trasa i:first-child{border-color:var(--ink)}
+.karta h3{font-size:23px}
+.karta .fl{font-size:15px;color:var(--mu)}
+.karta .fl b{color:var(--tx);font-family:Saira,sans-serif;font-size:17px}
+.karta .lin{font-size:15px;margin-top:4px}
+.nawig{display:flex;gap:10px}
+.nawig button{width:50px;height:50px;border:2px solid var(--ink);background:#fff;border-radius:3px;cursor:pointer;display:grid;place-items:center}
+.nawig button:hover{background:var(--am);border-color:var(--am)}
+.nawig svg{width:18px;height:18px}
+
+/* wspolpraca */
+.wsp{padding:clamp(56px,6vw,110px) 0}
+.wsp .uk{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,80px);align-items:start}
+.wsp .txt p{color:var(--mu);margin:18px 0 0}
+.kanaly{margin-top:26px;display:grid;gap:12px}
+.kanal{display:flex;align-items:center;gap:14px;text-decoration:none;font-weight:600;padding:14px 16px;border:1px solid var(--line);border-radius:3px}
+.kanal:hover{border-color:var(--ink)}
+.kanal svg{width:22px;height:22px;flex:none}
+.kanal span{font-weight:400;color:var(--mu);font-size:14px;display:block}
+form.zgl{background:var(--g);padding:clamp(22px,2.4vw,40px);border-radius:3px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.zgl .pe{grid-column:1/-1}
+.zgl label{display:block;font-size:14.5px;font-weight:600;margin-bottom:6px}
+.zgl input,.zgl select,.zgl textarea{width:100%;font:16px Inter,sans-serif;padding:12px 14px;border:1px solid #c3c9d0;border-radius:3px;background:#fff;min-height:48px}
+.zgl textarea{min-height:120px;resize:vertical}
+.zgl .info{font-size:14px;color:var(--mu);margin:0}
+.zgl .ok{grid-column:1/-1;margin:0;font-weight:600;min-height:1.6em}
+
+/* stopka */
+.ft{background:var(--ink);color:#b9bec5;padding:56px 0 26px;font-size:15.5px}
+.ft .gr{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:32px}
+.ft img{height:40px;width:auto;margin-bottom:16px}
+.ft h4{font:700 16px Saira,sans-serif;color:#fff;margin:0 0 12px}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.ft a{text-decoration:none}.ft a:hover{color:#fff}
+.ft .dol{margin-top:40px;padding-top:20px;border-top:1px solid #30343a;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px}
+.wylinka-badge{display:inline-flex;align-items:center;gap:.4em;color:inherit;text-decoration:none;font-size:.875em;line-height:1;opacity:.85}
+.wylinka-badge:hover,.wylinka-badge:focus-visible{opacity:1}
+.wylinka-badge:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:2px}
+.wylinka-badge svg{width:18px;height:18px;flex:none;overflow:visible}
+.wylinka-badge b{font-weight:600}
+.wylinka-badge .wy-old{opacity:.45;transform-origin:40px 30px;transition:transform .32s cubic-bezier(.3,.7,.4,1),opacity .32s ease-out}
+.wylinka-badge .wy-pod{opacity:0;transition:opacity .2s ease-out .08s}
+.wylinka-badge:hover .wy-old,.wylinka-badge:focus-visible .wy-old{transform:translate(9px,7px) rotate(9deg);opacity:0}
+.wylinka-badge:hover .wy-pod,.wylinka-badge:focus-visible .wy-pod{opacity:1}
+@media (prefers-reduced-motion:reduce){.wylinka-badge .wy-old,.wylinka-badge .wy-pod{transition:none}.wylinka-badge:hover .wy-old,.wylinka-badge:focus-visible .wy-old{transform:none;opacity:.45}.wylinka-badge:hover .wy-pod,.wylinka-badge:focus-visible .wy-pod{opacity:0}}
+
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(10,11,13,.94);display:none;align-items:center;justify-content:center}
+.lb.otw{display:flex}
+.lb img{max-width:min(94vw,1200px);max-height:84vh;width:auto;height:auto}
+.lb p{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:#fff;margin:0;font-size:15px}
+.lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.lb button svg{width:20px;height:20px}
+.lb .x{top:16px;right:16px}.lb .l{left:16px;top:50%;transform:translateY(-50%)}.lb .p{right:16px;top:50%;transform:translateY(-50%)}
+
+@media (min-width:1900px){:root{--hd:80px}.logo img{height:46px}.nav a{font-size:17px}}
+@media (max-width:1299px){.wpisy{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:1099px){.uklad{grid-template-columns:1fr}.mozaika{grid-template-columns:repeat(2,1fr)}.mozaika img:nth-child(n+5){display:none}.panel{width:min(560px,56vw)}}
+@media (max-width:899px){
+ :root{--hd:58px;--w:calc(100vw - 36px)}
+ body{font-size:16.5px}
+ .logo img{height:32px}
+ .burger{display:block}
+ .nav{position:fixed;left:0;right:0;top:var(--hd);bottom:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 18px 30px;display:none;overflow:auto}
+ .hd.otw .nav{display:flex}
+ .nav a{font:700 22px/1.2 Saira,sans-serif;padding:16px 0;border-bottom:1px solid var(--line)}
+ .nav a.akt{border-bottom-color:var(--line);box-shadow:inset 4px 0 0 var(--am);padding-left:14px}
+ .mozaika{display:none}
+ .hero-m{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+ .hero{display:flex;flex-direction:column;min-height:calc(100svh - var(--hd))}
+ .panel{position:static;transform:none;width:auto;box-shadow:none;padding-bottom:28px;flex:1}
+ .rozklad{border-top:1px solid #2c3036}
+ .wybor{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+ .wybor button{padding:11px 12px;font-size:15px}
+ .nawig{display:none}
+ .tablica{padding:11px 18px;font-size:13.5px}
+ .panel h1{font-size:clamp(29px,7.4vw,36px);padding:18px 18px 0}
+ .panel p{margin:12px 18px 0;font-size:16px;line-height:1.5}
+ .panel{display:flex;flex-direction:column}
+ .szybkie{margin:auto 0 0;padding:14px 18px 0;border-top:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+ .szybkie::-webkit-scrollbar{display:none}
+ .szybkie span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .szybkie button{flex:none}
+ .panel .btn{margin:28px 18px 0;align-self:stretch;width:calc(100% - 36px);justify-content:center}
+ .wpisy{grid-template-columns:1fr}
+ .wsp .uk{grid-template-columns:1fr}
+ form.zgl{grid-template-columns:1fr}
+ .ft .gr{grid-template-columns:1fr 1fr}
+ .ft .gr>div:first-child,.ft .gr>div:last-child{grid-column:1/-1}
+ .ft li{overflow-wrap:anywhere}
+ .wiersz{grid-template-columns:54px 1fr}
+ .wiersz .g{font-size:23px}
+ .wiersz .m span{font-size:20px}
+ .karuzela{grid-auto-columns:82vw}
+ .zdj .st{display:none}
+}
+@media (max-height:700px) and (max-width:899px){.hero-m{aspect-ratio:2/1}.panel h1{font-size:clamp(27px,7vw,32px)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hd" id="hd">
+ <div class="wrap">
+  <a class="logo" href="#" aria-label="Komunikacja suska - strona główna"><img src="img/logo.png" width="578" height="113" alt="Komunikacja suska"></a>
+  <nav class="nav" id="nav" aria-label="Menu główne">
+   <a href="#rozklad" class="akt">Rozkłady jazdy</a>
+   <a href="#trasy">Wszystkie trasy</a>
+   <a href="#aktualnosci">Utrudnienia i aktualności</a>
+   <a href="#przewoznicy">Przewoźnicy</a>
+   <a href="#kontakt">Kontakt</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+ </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+ <div class="mozaika" aria-hidden="true">
+  <img src="img/ksu-hk22-1200.webp" srcset="img/ksu-hk22-600.webp 600w, img/ksu-hk22-1200.webp 1200w" sizes="(max-width:1099px) 50vw, 34vw" width="1200" height="800" alt="" fetchpriority="high">
+  <img src="img/knt-1tg5-1200.webp" srcset="img/knt-1tg5-600.webp 600w, img/knt-1tg5-1200.webp 1200w" sizes="(max-width:1099px) 50vw, 34vw" width="1200" height="800" alt="">
+  <img src="img/knt-97264-1200.webp" srcset="img/knt-97264-600.webp 600w, img/knt-97264-1200.webp 1200w" sizes="(max-width:1099px) 50vw, 34vw" width="1200" height="800" alt="">
+  <img src="img/ksu-at69-1200.webp" srcset="img/ksu-at69-600.webp 600w, img/ksu-at69-1200.webp 1200w" sizes="(max-width:1099px) 50vw, 34vw" width="1200" height="800" alt="">
+  <img src="img/ksu-hk33-1200.webp" srcset="img/ksu-hk33-600.webp 600w, img/ksu-hk33-1200.webp 1200w" sizes="34vw" width="1200" height="800" alt="">
+  <img src="img/ksu-gk90-1200.webp" srcset="img/ksu-gk90-600.webp 600w, img/ksu-gk90-1200.webp 1200w" sizes="34vw" width="1200" height="800" alt="">
+ </div>
+ <img class="hero-m" src="img/hero-m-720.webp" srcset="img/hero-m-720.webp 720w, img/hero-m-1100.webp 1100w" sizes="100vw" width="1100" height="619" alt="Autobus X-Bus z tablicą Zawoja na drodze w powiecie suskim" fetchpriority="high">
+ <div class="panel">
+  <div class="tablica" aria-hidden="true"><span>Sucha Beskidzka</span><span class="trasa"><i></i><b></b><i></i><b></b><i></i></span><span>Zawoja</span></div>
+  <h1 id="h1">Rozkłady jazdy busów w powiecie suskim</h1>
+  <p>Sucha Beskidzka, Maków Podhalański, Jordanów, Zawoja i dojazdy do Krakowa. Rozkłady prywatnych przewoźników w jednym miejscu, od 2017 roku.</p>
+  <a class="btn" href="#rozklad">Sprawdź odjazdy <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></a>
+  <div class="szybkie"><span>Najczęściej sprawdzane:</span><button type="button" data-trasa="zk">Zawoja – Kraków</button><button type="button" data-trasa="kz">Kraków – Zawoja</button><button type="button" data-trasa="jk">Jordanów – Kraków</button></div>
+ </div>
+</section>
+
+<section class="rozklad" id="rozklad" aria-labelledby="h-rozklad">
+ <div class="wrap">
+  <div class="sek-gl">
+   <h2 id="h-rozklad">Tablica odjazdów</h2>
+   <p>Wybierz trasę, przystanek i dzień. Godziny w pionie, minuty obok, jak na kartce rozkładu na przystanku.</p>
+   <span class="trasa" aria-hidden="true"><i></i><b></b><i></i><b></b><i></i><b></b><i></i></span>
+  </div>
+  <div class="wybor" id="wyborTrasy" role="group" aria-label="Trasa"></div>
+  <div class="uklad">
+   <div>
+    <div class="filtry">
+     <div><label for="przystanek">Przystanek</label><select id="przystanek"></select></div>
+     <div><label id="l-dzien">Dzień</label><div class="dni" id="dni" role="group" aria-labelledby="l-dzien"></div></div>
+    </div>
+    <div class="najblizszy" id="najblizszy" aria-live="polite"></div>
+    <div class="tabl" id="tabl"></div>
+    <p class="legenda" id="legenda"></p>
+   </div>
+   <aside class="bok" id="bok" aria-label="Szczegóły trasy"></aside>
+  </div>
+ </div>
+</section>
+
+<section class="trasy" id="trasy" aria-labelledby="h-trasy">
+ <div class="wrap">
+  <div class="sek-gl">
+   <h2 id="h-trasy">Wszystkie trasy w serwisie</h2>
+   <p>Każda trasa ma własną stronę z rozkładem, przystankami i przewoźnikiem. Zaznaczone trasy możesz otworzyć na tablicy powyżej.</p>
+   <span class="trasa" aria-hidden="true"><i></i><b></b><i></i><b></b><i></i><b></b><i></i></span>
+  </div>
+  <div class="kol">
+   <div class="grupa">
+    <h3>Powiat suski i okolice</h3>
+    <ul>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Sucha Beskidzka – Jordanów<em>przez Maków Podhalański, Białkę, Juszczyn, Osielec</em></span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Jordanów – Sucha Beskidzka</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Sucha Beskidzka – Wadowice</span><span class="data">od 24.12.2020</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Wadowice – Sucha Beskidzka</span><span class="data">od 24.12.2020</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Sucha Beskidzka – Bielsko-Biała</span><span class="data">od 01.09.2020</span></div></li>
+     <li><button class="poz" data-trasa="kr"><span class="kropka"></span><span class="rel">Zawoja Markowa – Zawoja Krowiarki<em>Wójtowicz Travel, sezonowo</em></span><span class="data">od 01.04.2024</span></button></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Zawoja – Rowy</span><span class="data">od 28.06.2019</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Dworzec autobusowy w Suchej Beskidzkiej</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Dworzec autobusowy w Makowie Podhalańskim</span></div></li>
+    </ul>
+   </div>
+   <div class="grupa">
+    <h3>Kraków, Śląsk i dalej</h3>
+    <ul>
+     <li><button class="poz" data-trasa="zk"><span class="kropka"></span><span class="rel">Zawoja – Kraków<em>X-Bus, przez Maków Podh. i Suchą Beskidzką</em></span><span class="data">od 04.12.2023</span></button></li>
+     <li><button class="poz" data-trasa="kz"><span class="kropka"></span><span class="rel">Kraków – Zawoja<em>X-Bus</em></span><span class="data">od 15.01.2022</span></button></li>
+     <li><button class="poz" data-trasa="jk"><span class="kropka"></span><span class="rel">Jordanów – Kraków<em>przez Myślenice</em></span><span class="data">od 01.07.2022</span></button></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Żywiec – Kraków<em>X-Bus</em></span><span class="data">od 04.12.2023</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Katowice – Zawoja / Zawoja – Katowice</span><span class="data">od 25.05.2020</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Katowice – Zakopane</span><span class="data">od 16.11.2019</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Rybnik – Zakopane</span><span class="data">od 20.07.2020</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Nysa – Nowy Sącz</span><span class="data">od 01.02.2020</span></div></li>
+     <li><div class="poz"><span class="kropka"></span><span class="rel">Kudowa-Zdrój – Zakopane</span></div></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="akt-s" id="aktualnosci" aria-labelledby="h-akt">
+ <div class="wrap">
+  <div class="sek-gl">
+   <h2 id="h-akt">Utrudnienia i aktualności</h2>
+   <p>Zamknięte przystanki, zmiany na święta, nowe i zawieszone linie. Najważniejsze komunikaty zawsze na górze.</p>
+   <span class="trasa" aria-hidden="true"><i></i><b></b><i></i><b></b><i></i><b></b><i></i></span>
+  </div>
+  <div class="wpisy">
+   <article class="wpis"><time datetime="2024-08-19">19.08.2024</time><span class="kat">Utrudnienia</span><h3>Tymczasowe wyłączenie przystanków w Gilowicach i Ślemieniu</h3><p>Kilka dni utrudnień dla pasażerów ze Ślemienia i Gilowic w związku z zamknięciem drogi powiatowej.</p></article>
+   <article class="wpis"><time datetime="2024-04-30">30.04.2024</time><span class="kat">Rozkłady jazdy</span><h3>Majówka 2024 – z kim i gdzie pojedziemy?</h3><p>Informacje przewoźników o kursowaniu busów w dniach 1-5 maja 2024 roku.</p></article>
+   <article class="wpis"><time datetime="2024-04-03">03.04.2024</time><span class="kat">Rozkłady jazdy</span><h3>Nowy przewoźnik na linii Sucha Beskidzka – Bieńkówka</h3><p>Mieszkańcy Bieńkówki i Jachówki zgłaszali godziny odjazdów niedopasowane do potrzeb uczniów.</p></article>
+   <article class="wpis"><time datetime="2024-03-08">08.03.2024</time><span class="kat">Aktualności</span><h3>Linia Kalwaria Zebrzydowska – Sucha Beskidzka zostanie zawieszona</h3><p>Linia, z której w dni nauki szkolnej korzystali uczniowie szkół średnich w Suchej Beskidzkiej.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="przew" id="przewoznicy" aria-labelledby="h-przew">
+ <div class="wrap">
+  <div class="sek-gl">
+   <h2 id="h-przew">Przewoźnicy i ich tabor</h2>
+   <p>Baza firm przewozowych: dane kontaktowe, obsługiwane trasy i zdjęcia pojazdów, które robimy na trasach powiatu.</p>
+   <div class="nawig"><button type="button" data-k="-1" aria-label="Poprzedni przewoźnicy"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M13 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button><button type="button" data-k="1" aria-label="Następni przewoźnicy"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button></div>
+   <span class="trasa" aria-hidden="true"><i></i><b></b><i></i><b></b><i></i><b></b><i></i></span>
+  </div>
+ </div>
+ <div class="wrap"><div class="karuzela" id="karuzela"></div></div>
+</section>
+
+<section class="wsp" id="kontakt" aria-labelledby="h-wsp">
+ <div class="wrap uk">
+  <div class="txt">
+   <h2 id="h-wsp">Współtwórz Komunikację suską</h2>
+   <p>Zauważyłeś zmianę w rozkładzie, nowy bus na trasie albo zamknięty przystanek? Daj znać. Rozkłady powstają na podstawie informacji od przewoźników, ich stron i wydanych zezwoleń, a każde zgłoszenie od pasażerów pomaga utrzymać je aktualne.</p>
+   <div class="kanaly">
+    <a class="kanal" href="mailto:kontakt@komunikacjasuska.pl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><div>kontakt@komunikacjasuska.pl<span>Napisz do redakcji</span></div></a>
+    <a class="kanal" href="https://www.facebook.com/komunikacjasuska/" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v7h4v-7h3l.6-4H14V8.6c0-.4.3-.6.6-.6z" fill="currentColor"/></svg><div>facebook.com/komunikacjasuska<span>Komunikaty na bieżąco</span></div></a>
+   </div>
+  </div>
+  <form class="zgl" id="zgl" novalidate>
+   <div><label for="f-imie">Imię</label><input id="f-imie" name="imie" autocomplete="name"></div>
+   <div><label for="f-mail">E-mail</label><input id="f-mail" name="mail" type="email" autocomplete="email"></div>
+   <div class="pe"><label for="f-rodzaj">Czego dotyczy zgłoszenie?</label><select id="f-rodzaj" name="rodzaj"><option>Zmiana w rozkładzie jazdy</option><option>Utrudnienie lub zamknięty przystanek</option><option>Zdjęcie pojazdu do galerii</option><option>Nowy przewoźnik lub pojazd</option><option>Błąd na stronie</option></select></div>
+   <div class="pe"><label for="f-tresc">Trasa, przewoźnik i szczegóły</label><textarea id="f-tresc" name="tresc"></textarea></div>
+   <div class="pe"><label for="f-plik">Zdjęcie lub skan rozkładu (opcjonalnie)</label><input id="f-plik" name="plik" type="file" accept="image/*,.pdf"></div>
+   <div class="pe"><button class="btn" type="submit">Wyślij zgłoszenie</button></div>
+   <p class="ok" id="zgl-ok" aria-live="polite"></p>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer class="ft">
+ <div class="wrap">
+  <div class="gr">
+   <div><img src="img/logo-biale.png" width="578" height="113" alt="Komunikacja suska" loading="lazy"><p style="margin:0;max-width:420px">Niezależny serwis o komunikacji busowej w powiecie suskim. Rozkłady jazdy, utrudnienia, przewoźnicy i ich tabor.</p></div>
+   <div><h4>Serwis</h4><ul><li><a href="#rozklad">Rozkłady jazdy</a></li><li><a href="#trasy">Wszystkie trasy</a></li><li><a href="#przewoznicy">Firmy przewozowe</a></li><li><a href="#aktualnosci">Aktualności</a></li></ul></div>
+   <div><h4>Redakcja</h4><ul><li><a href="#kontakt">O stronie</a></li><li><a href="#kontakt">Media o nas</a></li><li><a href="#kontakt">Współpraca</a></li><li><a href="#kontakt">Zgłoś błąd</a></li></ul></div>
+   <div><h4>Kontakt</h4><ul><li>kontakt@komunikacjasuska.pl</li><li>facebook.com/komunikacjasuska</li></ul></div>
+  </div>
+  <div class="dol"><span>© 2017–<span id="rok">2026</span> komunikacjasuska.pl</span><a class="wylinka-badge" href="https://wylinka.pl/?utm_source=komunikacjasuska.pl&amp;utm_medium=stopka&amp;utm_campaign=wykonanie" rel="noopener" title="Strona wykonana przez Wylinka"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="currentColor"><path d="M9.8 22.8l-1.2-7.9 2.2-3.7 15.5 4.6-.5 1.5-7.2 5.5 4.7 15.6 5-15.6 7 0 4.1 12.7-4.2-.9-2.6 1.8-.8-2.2-5.3 15.6-4.3 0 .4 .2-2.1 2.8-1.3-1.1 1.1-1.4-3.1 .2-.1-1.7 2.2-.1-5.7-16.5-4.8 .6-.8 3.1 0 .5-.3 .5 .8 2.2-1.6 .5-.4-1.3-.8 1.6-1.5-.8 .8-1.6-1.4 .6-.6-1.6 2.3-.8 .2-.4 1.3-4.8 5.9-.8-2.4-6.9zM15.2 13.7l-.1-.4-.4 .8-.1 .8 .1 1 .1 .4 .3 .7 .3-.9 .1-.7 0-.8z"/><path class="wy-pod" d="M37.1 49.8l-4.5-13.3 2.6-1.8 4.2 .9 .9 2.8 3-9.7 0-.5 .1-.8 3.2-8.4 .5-1 .6-1 .9-1.1 1.3-1 1.1-.7 1.4-.5 1.4-.3 .7 0 .9 0 1.2 .3 1.4 .6 .8 .5 .7 .7 .6 .7 .5 .9 .3 .9 .1 .9 0 .8-.2 .9-.5 .9-.5 .6-.7 .5-.7 .3-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.6-.1-.6-.3-.7-.4-.5-.4-.4-.5-.3-.6-.3-.7 0-.7 .1-.6 .1-.5 .4-.5 .5-.3 .5-.2 .7-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1-2.1-2.8 .4-.2z"/><path class="wy-old" d="M40.8 50l.4-.2-4.1 0-4.2-12.5 2.5-1.7 4.3 .9 .6 1.9 .6-1.6 0-.3 2.4-7.8 0-.5 .1-.8 3.2-8.4 .4-.8 .6-.9 .9-1.2 .9-.9 1.3-.8 1.4-.6 1.2-.3 1.4-.1 1.3 .1 .6 .2 .8 .3 1.1 .6 .9 .7 .7 .9 .5 .9 .3 .9 .1 1.1-.1 .9-.3 .9-.4 .7-.6 .7-.6 .4-.6 .2-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.5-.1-.6-.2-.6-.3-.5-.4-.5-.5-.3-.6-.3-.7-.1-.6 0-.6 .1-.6 .3-.6 .5-.3 .4-.2 .5-.1 .5-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1zM49.6 17.1l.6 1.7-1.5 1.9 .4 .4 1.8-2.1-.7-2.1zM48.1 28.3l.5 1.8-1.7 1.8 .4 .4 1.9-2-.6-2.2zM37.9 41.7l1.7-1.5-.4-.4-1.7 1.4zM42.6 38.7l-1.5 2.8 1.1 2-1.3 2.6 .5 .2 1.5-2.8-1.1-2 1.4-2.5z"/></svg><span>wykonanie: <b>Wylinka</b></span></a>
+</div>
+ </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie">
+ <img id="lb-img" alt="">
+ <p id="lb-p"></p>
+ <button class="x" type="button" aria-label="Zamknij"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2.4"/></svg></button>
+ <button class="l" type="button" aria-label="Poprzednie zdjęcie"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M13 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+ <button class="p" type="button" aria-label="Następne zdjęcie"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
